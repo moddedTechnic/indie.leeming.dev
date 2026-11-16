@@ -1,0 +1,388 @@
+/* Mostly inspired by:
+ * - [Andy Bell / Piccalil.li](https://piccalil.li/blog/a-more-modern-css-reset/)
+ * - [Chris Coyier](https://blog.master.dev/the-coyier-css-starter/)
+ * - [Stu Robson](https://css-tricks.com/taming-typography-modern-css-reset/)
+ */
+
+@layer reset {
+    /* Box sizing rules */
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        /* Prevent font size inflation */
+        -moz-text-size-adjust: none;
+        -webkit-text-size-adjust: none;
+        text-size-adjust: none;
+
+        /* Font rendering improvements */
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        font-synthesis: none;
+
+        /* Basic colour theming */
+        /* don't flashbang darkmode peeps */
+        color-scheme: dark light;
+
+        /* Basic typography */
+        /* 8 is too many */
+        tab-size: 4;
+        /* better rag */
+        hanging-punctuation: first allow-end last;
+        word-break: break-word;
+    }
+
+    body {
+        font-size-adjust: from-font;
+    }
+
+    /* Remove default margin in favour of better control in authored CSS */
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    p,
+    figure,
+    blockquote,
+    dl,
+    dd {
+        margin-block-end: 0;
+    }
+
+    /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+    ul[role="list"],
+    ol[role="list"] {
+        list-style: none;
+    }
+
+    /* Set core body defaults */
+    body {
+        min-height: 100vh;
+        line-height: 1.5;
+    }
+
+    /* Set shorter line heights on headings and interactive elements */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    button,
+    input,
+    label {
+        line-height: 1.1;
+    }
+
+    /* Balance text wrapping on headings */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        text-wrap: balance;
+    }
+
+    p,
+    li,
+    dd {
+        text-wrap: pretty;
+    }
+
+    [contenteditable="true"] {
+        text-wrap: stable;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    blockquote,
+    figcaption,
+    li {
+        text-box-trim: trim-both;
+        text-box-edge: cap alphabetic;
+    }
+
+    /* control hyphenation sensibly */
+    p,
+    li,
+    dd {
+        /* magic values from CSS tricks. maybe play with these at some point */
+        hyphens: auto;
+        hyphenate-limit-chars: 6 3 3; /* word length, min before break, min after break */
+        hyphenate-character: "‐"; /* use proper hyphen glyph instead of dash */
+        hyphenate-limit-lines: 2; /* no more than 2 consecutive hyphenated lines */
+        hyphenate-limit-zone: 8%; /* reduce overall hyphenation frequency */
+        hyphenate-limit-last: always; /* never hyphenate the last word of a paragraph */
+
+        /* Safari legacy equivalents */
+        -webkit-hyphens: auto;
+        -webkit-hyphenate-limit-before: 4;
+        -webkit-hyphenate-limit-after: 3;
+        -webkit-hyphenate-limit-lines: 2;
+    }
+
+    pre,
+    code,
+    var,
+    samp,
+    kbd,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        hyphens: manual;
+        -webkit-hyphens: manual;
+    }
+
+    /* do I need all these lanuages? no. but the snippet has them and why not */
+    :where(:lang(en)) > * {
+        quotes: '"' '"' "'" "'";
+    }
+    :where(:lang(en-GB)) > * {
+        quotes: "'" "'" '"' '"';
+    }
+    :where(:lang(fr)) > * {
+        quotes: "«\\00202F" "\\00202F»" '"' '"';
+    }
+
+    q::before {
+        content: open-quote;
+    }
+    q::after {
+        content: close-quote;
+    }
+
+    /* indent nested lists nicely */
+    ul,
+    ol,
+    dl {
+        margin: 0;
+        padding: 0;
+        list-style: inside;
+        ul,
+        ol,
+        dl {
+            /* TODO: might want 4ch to match tab size? */
+            padding-inline-start: 2ch;
+        }
+    }
+
+    /* A elements that don't have a class get default styles */
+    a:not([class]) {
+        text-decoration-skip-ink: auto;
+        color: currentColor;
+
+        text-decoration-thickness: from-font;
+        text-underline-offset: 0.15em;
+        text-decoration-skip-ink: auto;
+    }
+
+    /* Make images/video/iframes easier to work with */
+    img,
+    video,
+    iframe {
+        display: block;
+        max-inline-size: 100%;
+        block-size: auto;
+        border-style: none;
+    }
+
+    figure {
+        inline-size: fit-content;
+        margin-inline: auto;
+    }
+    figcaption {
+        contain: inline-size;
+        font-size: 0.9em;
+    }
+
+    svg {
+        fill: currentColor;
+    }
+
+    /* Inherit fonts for inputs and buttons */
+    input,
+    button,
+    textarea,
+    select {
+        font-family: inherit;
+        font-size: inherit;
+    }
+
+    label {
+        display: block;
+    }
+
+    input:not(
+        :where(
+            [type="submit"],
+            [type="checkbox"],
+            [type="radio"],
+            [type="button"],
+            [type="reset"]
+        )
+    ) {
+        inline-size: 100%;
+    }
+
+    button,
+    input:where([type="submit"], [type="reset"], [type="button"]) {
+        background: CanvasText;
+        color: Canvas;
+        border: 1px solid transparent;
+    }
+
+    /* Make sure textareas without a rows attribute are not tiny */
+    textarea {
+        field-sizing: content;
+        min-block-size: 7lh;
+        inline-size: 100%;
+        max-inline-size: 100%;
+    }
+
+    /* Sensible wrapping in code blocks */
+    pre {
+        white-space: pre-wrap;
+    }
+
+    /* Some basic table styling */
+    table {
+        caption-side: bottom;
+        border-collapse: collapse;
+        td {
+            font-size: 0.9em;
+        }
+        td,
+        th {
+            word-break: normal;
+            border: 1px solid gray;
+            padding: 0.5rem;
+        }
+    }
+    [role="region"][aria-labelledby][tabindex] {
+        overflow: auto;
+    }
+    caption {
+        font-size: 0.9em;
+    }
+
+    /* Pedantic tweaks to typography */
+    body {
+        font-optical-sizing: auto;
+        font-variant-ligatures: common-ligatures contextual;
+        font-kerning: normal;
+    }
+
+    /* Dark mode grade compensation */
+    :root {
+        --vf-grad: 0;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --vf-grad: -50;
+        }
+    }
+
+    * {
+        font-variation-settings: "GRAD" var(--vf-grad, 0);
+    }
+
+    /* including using the right numbers where possible */
+    table,
+    .tabular {
+        font-variant-numeric: tabular-nums lining-nums;
+    }
+
+    .prose,
+    p,
+    li,
+    dd {
+        font-variant-numeric: oldstyle-nums proportional-nums;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-variant-numeric: tabular-nums proportional-nums;
+    }
+
+    /* I don't use loads of emoji, but useful to have */
+    .emoji-color {
+        font-variant-emoji: emoji;
+    }
+
+    .emoji-mono,
+    pre,
+    code,
+    kbd,
+    var,
+    samp {
+        font-variant-emoji: text;
+    }
+
+    /* handle sub/super script properly with the font */
+    /* TODO: add Chris Coyier's handling as a fallback */
+    @supports (font-variant-position: sub) {
+        :is(sub, .sub) {
+            vertical-align: baseline;
+            font-size: 100%;
+            line-height: inherit;
+            font-variant-position: sub;
+        }
+    }
+
+    @supports (font-variant-position: super) {
+        :is(sup, .sup) {
+            vertical-align: baseline;
+            font-size: 100%;
+            line-height: inherit;
+            font-variant-position: super;
+        }
+    }
+
+    /* Make hidden behave as expected */
+    [hidden] {
+        display: none !important;
+    }
+    .screenreader-only:not(:focus):not(:active) {
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+    }
+    :focus-visible {
+        outline-offset: 2px;
+    }
+
+    /* Anything that has been anchored to should have extra scroll margin */
+    :target {
+        scroll-margin-block: 3rlh;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        * {
+            animation: none !important;
+            transition: none !important;
+            transition-duration: 0 !important;
+        }
+    }
+}
