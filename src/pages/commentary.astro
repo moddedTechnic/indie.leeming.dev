@@ -1,17 +1,9 @@
 ---
+import BaseLayout from "@layouts/BaseLayout.astro";
 ---
 
-<html lang="en-GB">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>commentary</title>
-	</head>
-	<body>
-		<h1>commentary</h1>
+<BaseLayout title="commentary">
+	<h1>commentary</h1>
 		<article>
 			<h2>Our CSS Isn't Opinionated Enough</h2>
 			<p>
@@ -58,5 +50,5 @@
 				extension to document a custom superset of CSS.
 			</p>
 		</article>
-	</body>
-</html>
+
+</BaseLayout>

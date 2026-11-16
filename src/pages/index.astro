@@ -1,32 +1,23 @@
 ---
+import BaseLayout from "@layouts/BaseLayout.astro";
 ---
 
-<html lang="en-GB">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>random stuff</title>
-	</head>
-	<body>
-		<h1>random stuff</h1>
-		<p>
-			This is not my main website. Please visit
-			&nbsp;
-			<a href="https://leeming.dev/"><code>leeming.dev</code></a>
-			&nbsp;
-			if you are looking for something professional.
-		</p>
+<BaseLayout>
+    <h1>random stuff</h1>
+    <p>
+        This is not my main website. Please visit
+        &nbsp;
+        <a href="https://leeming.dev/"><code>leeming.dev</code></a>
+        &nbsp;
+        if you are looking for something professional.
+    </p>
 
-		<nav>
-			<h2>pages of interest</h2>
-			<ul>
-				<li>
-					<a href="/commentary">commentary</a>
-				</li>
-			</ul>
-		</nav>
-	</body>
-</html>
+    <nav>
+        <h2>pages of interest</h2>
+        <ul>
+            <li>
+                <a href="/commentary">commentary</a>
+            </li>
+        </ul>
+    </nav>
+</BaseLayout>
