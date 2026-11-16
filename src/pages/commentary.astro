@@ -1,0 +1,62 @@
+---
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>commentary</title>
+	</head>
+	<body>
+		<h1>commentary</h1>
+		<article>
+			<h2>Our CSS Isn't Opinionated Enough</h2>
+			<p>
+				Just read an article about how
+				<a href="https://www.craigabbott.co.uk/blog/2026/our-css-isnt-opinionated-enough/">
+					CSS isn't opinionated enough
+				</a>.
+				As part of that, Craig argues that we should do more styling with element tags and
+				using accessibility attribute selectors (e.g. <code>[aria-current="page"]</code>)
+				to ensure that styles are only applied when the HTML semantics make sense for them
+				to be. That article has a lot of good points, so definitely go and read it if you
+				haven't seen it.
+			</p>
+			<p>
+				On the whole, I'm not mad keen on Tailwind. There's a number of reasons for this,
+				for example how it encourages you to write your styles horizontally, rather than
+				having a clean left edge to easily scan. One of my biggest complaints is how it
+				often leads to inconsistent styling of a given component/element type on a page.
+				Granted, if you split things into components early and often, you can avoid this.
+				But it's often very tempting to "just add a couple of classes here and there" and
+				then... you've ended up with inconsistent styling.
+			</p>
+			<p>
+				This article proposes that an over-reliance on classes can lead to using the wrong
+				HTML element under the hood &mdash; something I'd never really considered before.
+				In both cases however, writing CSS to target the correct elements and ARIA-lead
+				exceptions encourages devs to do the right thing. Not by making it "more correct",
+				but by making it easier. Reducing friction seems to be the most reliable way of
+				getting people (myself included) to make better decisions.
+			</p>
+			<p>
+				If you love Tailwind, this probably won't change your mind. You've probably got an
+				article similar to this one which gives you similarly strong justification in the
+				other direction. That's fine. But I'm always happy to have one more reason to advocate
+				against using tech that doesn't work for my brain. (Just as you should for yours.)
+			</p>
+			<p>
+				P.S. the stack I would use is pretty much CUBE CSS, albeit with a minimal utility
+				layer. That being said, this is one place where I don't mind having Tailwind, as
+				it does do that job very well. Although I'm now looking at using UnoCSS instead,
+				as Tailwind V4's config system does expect you to be much more aligned with their
+				default way of doing things. I'd also write a config file in standard JSON or JavaScript,
+				using types or schemata that any editor can load and hint for, rather than relying on an
+				extension to document a custom superset of CSS.
+			</p>
+		</article>
+	</body>
+</html>
